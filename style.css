@@ -1,0 +1,107 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+header {
+  text-align: center;
+  padding: 28px 16px 8px;
+}
+header h1 { font-size: 1.8rem; }
+header p { color: #94a3b8; }
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 18px;
+}
+.card h2 { font-size: 1.1rem; margin-bottom: 12px; }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+input, select {
+  flex: 1 1 110px;
+  padding: 10px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { background: #2563eb; }
+button.secondary { background: #475569; }
+button.secondary:hover { background: #64748b; }
+
+.hint { font-size: 0.85rem; color: #94a3b8; }
+
+.table-wrap { overflow-x: auto; margin: 10px 0; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #334155;
+}
+th { color: #94a3b8; font-weight: 600; }
+
+#gantt { display: flex; min-height: 50px; }
+#timeline { display: flex; }
+
+#averages { margin-top: 10px; font-weight: 600; color: #38bdf8; }
+.block {
+  flex: none;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  border-right: 2px solid #0f172a;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 0.4s, transform 0.4s;
+}
+.block.show { opacity: 1; transform: scaleX(1); }
+.block.idle {
+  background-image: repeating-linear-gradient(
+    45deg, transparent 0 6px, rgba(255,255,255,0.12) 6px 12px);
+}
+
+.tick {
+  flex: none;
+  position: relative;
+  height: 24px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.tick.show { opacity: 1; }
+.tick .end { position: absolute; right: 0; }
