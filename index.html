@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CPU Scheduling Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>CPU Scheduling Visualizer</h1>
+    <p>FCFS • Round Robin • Priority</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1. Add Processes</h2>
+      <div class="row">
+        <input id="pid" placeholder="PID (P1)">
+        <input id="arrival" type="number" min="0" placeholder="Arrival">
+        <input id="burst" type="number" min="1" placeholder="Burst">
+        <input id="priority" type="number" min="1" placeholder="Priority">
+        <button id="addBtn">Add</button>
+      </div>
+      <p class="hint">Priority: lower number = higher priority.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>PID</th><th>Arrival</th><th>Burst</th><th>Priority</th><th></th></tr>
+          </thead>
+          <tbody id="processBody"></tbody>
+        </table>
+      </div>
+      <div class="row">
+        <button id="sampleBtn" class="secondary">Load Sample</button>
+        <button id="clearBtn" class="secondary">Clear All</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. Choose Algorithm</h2>
+      <div class="row">
+        <select id="algo">
+          <option value="fcfs">FCFS</option>
+          <option value="rr">Round Robin</option>
+          <option value="priority">Priority (Non-preemptive)</option>
+        </select>
+        <input id="quantum" type="number" min="1" value="2" placeholder="Time quantum">
+        <button id="runBtn">Run Simulation</button>
+      </div>
+      <p class="hint">Time quantum is used only for Round Robin.</p>
+    </section>
+
+    <section class="card">
+      <div  class="row">
+      <h2>3. Gantt Chart</h2>
+      <button id="replayBtn" class="secondary"> Replay</button>
+       </div>
+      <div class="table-wrap">
+        <div id="gantt"></div>
+        <div id="timeline"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4. Results</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>PID</th><th>Completion</th><th>Turnaround</th><th>Waiting</th></tr>
+          </thead>
+          <tbody id="resultBody"></tbody>
+        </table>
+      </div>
+      <p id="averages"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
